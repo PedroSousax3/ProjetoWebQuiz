@@ -1,0 +1,122 @@
+#main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+#menu-top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    height: 70px;
+    padding: 5px;
+
+    background-color: rgb(var(--primaria-fundo-rgb));
+}
+
+#menu-top > #dvLogoMenuTop > img {
+    margin-left: 10px;
+}
+
+#menu-top > #nvMenuTop {
+    display: flex;
+}
+
+#menu-top > #dvOpecoesMobile span.material-icons {
+    color: rgb(var(--primaria-texto-rgb));
+    font-weight: 600;
+    font-size: 40px;
+}
+
+#menu-top > #dvOpecoesMobile > button {
+    text-align: center;
+    height: auto;
+}
+
+#menu-top > #nvMenuTop > div {
+    padding: 10px;
+    margin: 5px;
+}
+
+#menu-top > #nvMenuTopMobile {
+    background-color: rgb(var(--primaria-fundo-rgb));
+    
+    display : none;
+    flex-direction: column;
+    
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+    
+    position: fixed;
+    top: 70px;
+    left: 0;
+
+    text-align: center;
+}
+
+#menu-top > #nvMenuTop > div:nth-child(1) {
+    margin-left: 30px;
+}
+
+#menu-top > #nvMenuTopMobile > div:nth-child(1) {
+    border-top: none;
+}
+
+
+#menu-top > #nvMenuTop > div > button,
+#menu-top > #nvMenuTopMobile > div > button {
+    color: rgb(var(--primaria-texto-rgb));
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.2rem;
+    background-color: transparent;
+    border: transparent;
+    cursor: pointer;
+}
+
+#menu-top > #nvMenuTopMobile > div {
+    padding: 10px;
+    border-bottom: 3px solid rgb(var(--primaria-texto-rgb));
+}
+
+#dvOpecoesMobile {
+    display: none;
+}
+
+@media screen and (min-width: 576px) {
+    #nvMenuTopMobile {
+        display: none!important;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    #dvOpecoesMobile {
+        display: block;
+        position: absolute;
+        right: 30px;
+    }
+
+    #menu-top > #nvMenuTop {
+        display: none;
+    }
+
+    #menu-top > #nvMenuTopMobile {
+        display: none;
+    }
+
+    #menu-top > #nvMenuTop > div:nth-child(1) {
+        margin-left: 0px;
+    }
+    
+    #menu-top > #nvMenuTop > div {
+        border-bottom: 5px solid rgba(var(--secundaria-fundo-rgb));
+    }
+}

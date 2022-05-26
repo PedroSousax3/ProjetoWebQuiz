@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+* {
+    font-family: Kanit, sans-serif;
+    box-sizing: border-box;
+}
+
+.texto-centro {
+    text-align: center;
+}
+
+.mt-1 {
+    margin-top: 0.25rem;
+}
+
+.mt-2 {
+    margin-top: 0.5rem;
+}
+
+.mt-3 {
+    margin-top: 0.75rem;
+}
+
+.mt-4 {
+    margin-top: 1rem;
+}
+
+.mt-5 {
+    margin-top: 2rem;
+}
+
+#conteudo {
+    flex-grow: 1;
+    display: flex;
+    background-color: rgb(var(--secundaria-fundo-rgb));
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    color: rgb(var(--secundaria-texto-rgb));
+}
+
+#conteudo > div {
+    max-width: 800px;
+}
+
+#pergunta {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#conteudo > #container-pergunta {
+    display: flex;
+    flex-grow: 1;
+
+    flex-direction: column;
+    justify-content: center;
+
+    max-width: 800px;
+}
+
+#alternativas {
+    display: flex;
+    flex-direction: column;
+}
+
+#alternativas > div {
+    
+    margin: 5px 0px;
+}
+
+#alternativas > div > input {
+    margin-right: 15px;
+}
+/* #conteudo {
+    flex: 1;
+    overflow: none;
+    margin-top: 70px;
+    background-color: rgb(var(--primaria-fundo-rgb));
+    height: auto;
+}
+
+#emContent {
+    width: 100%;
+    min-height: calc(100vh - 70px);
+} */
+
+
+
+/* main >  #render-conteudo {
+    padding: 0px 3rem;
+}
+*/
+/* footer {
+    text-align: center;
+    padding: 5px;
+    font-weight: 600;
+    color: rgb(var(--primaria-texto-rgb));
+    background-color: rgb(var(--secundaria-fundo-rgb));
+} */
+
+/* -------------------------------------------------------------------------------- */
+/* .container-input {
+    display: flex;
+    flex-direction: column;
+    margin: 6px;
+}
+
+.container-input > input, .container-input > textarea {
+    border-radius: 2px;
+    border: 1px solid rgba(var(--primaria-texto-rgb));
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.container-input > input:focus, .container-input > textarea:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: rgb(var(--primaria-texto-rgb));
+    box-shadow: 0 0 0 0.25rem rgba(var(--primaria-texto-rgb), 0.4);
+    outline: none;
+}
+
+.button-padrao {
+    color: #fff;
+    background-color: rgb(var(--primaria-texto-rgb));
+    border-color: rgb(var(--primaria-texto-rgb));
+    padding: 5px 10px;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 0.3rem;
+    border: none;
+    cursor: pointer;
+    margin-left: 6px;
+}
+
+.button-padrao:hover {
+    background-color: rgba(var(--primaria-texto-rgb), 0.8);
+    border-color: rgba(var(--primaria-texto-rgb), 0.8);
+}
+
+
+.button-padrao:focus, .button-padrao:active {
+    box-shadow: 0 0 0 0.25rem rgba(var(--primaria-texto-rgb), 0.4);
+}
+
+.container {
+    display: flex; 
+    flex-grow: 1;
+    flex-wrap: wrap;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.col-50 {
+    width: 50%;
+}
+
+@media screen and (max-width: 540px) {
+    .sm-container-column {
+        flex-direction: column;
+    }
+
+    .sm-100 {
+        width: 100%;
+    }
+}
+
+.text-white {
+    color: rgb(var(--primaria-texto-rgb));
+}
+
+.card {
+    text-align: center;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.card > div > i {
+    font-size: 40px;
+}
+
+.card.bg-success {
+    background-color: rgba(var(--secundaria-texto-rgb)) !important;
+}
+
+.card:hover {
+    background-color: rgba(var(--primaria-texto-rgb)) !important;
+    color: rgb(var(--secundaria-texto-rgb));
+    cursor: pointer;
+    transition-duration: 0.7s;
+} */

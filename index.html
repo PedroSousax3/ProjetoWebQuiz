@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="/styles/reset.css" />
+    <link rel="stylesheet" type="text/css" href="/styles/index.css" />
+    <link rel="stylesheet" type="text/css" href="/styles/components/menu.css" />
+    <link rel="stylesheet" type="text/css" href="/styles/components/button.css" />
+</head>
+<body>
+    <div id="main">
+        <header id="menu-top">
+            <div id="dvLogoMenuTop">
+                <img alt="Logo NextGenBooks" height="60px" src="./utils/images/logo-pequena.png" />
+            </div>
+            <nav id="nvMenuTop">
+                <div>
+                    <button onclick='rotear("home", "Início")'>Início</button>
+                </div>
+                <div>
+                    <button onclick='routerQuiz();'>Quiz</button>
+                </div>
+            </nav>
+
+            <nav id="nvMenuTopMobile">
+                <div>
+                    <button onclick='rotear("home", "Início")'>Início</button>
+                </div>
+                <div>
+                    <button onclick='routerQuiz();'>Quiz</button>
+                </div>
+            </nav>
+
+            <div id="dvOpecoesMobile">
+                <button onclick='gerenciarMenu();' style="border: none; background: none;">
+                    <span class="material-icons">
+                        view_headline
+                    </span>
+                </button>
+            </div>
+        </header>
+        <main id="conteudo">
+        </main>
+    </div>
+
+
+    <!-- <footer>
+        @Quiz
+    </footer> -->
+
+    <script type="text/javascript" src="../scripts/router.js"></script>
+    <script type="text/javascript" src="../scripts/quiz-pergunta.js"></script>
+    <script type="text/javascript">
+        document.body.onload = function () { 
+            rotear();
+        };
+    </script>
+</body>
+</html>
