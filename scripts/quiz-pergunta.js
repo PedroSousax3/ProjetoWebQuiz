@@ -19,6 +19,16 @@ function carregarPerguntas() {
     }
 }
 
+function listarRespostas() {
+    return JSON.parse(sessionStorage.getItem('respostas')) || [];
+}
+
+function inserirRespostar(resposta) {
+    let respostas = listarRespostas();
+    respostas.push(resposta);
+    sessionStorage.setItem('respostas', JSON.stringify(respostas));
+}
+
 function listarPerguntas() {
     return JSON.parse(sessionStorage.getItem('perguntas'));
 }
@@ -36,7 +46,7 @@ function popularTela() {
     let containerPergunta = document.getElementById("pergunta");
     let containerAlternativas = document.getElementById("alternativas");
     let pergunta = consultarPerguntas(codigoPergunta);
-    console.log(pergunta, codigoPergunta)
+
     containerPergunta.innerHTML = pergunta.pergunta;
     containerAlternativas.innerHTML = '';
     pergunta.alternativa.forEach(f => {
@@ -48,13 +58,17 @@ function proximaPergunta() {
     try {
         let btnProximaPergunta = document.getElementById('btnProximaPergunta');
         btnProximaPergunta.innerText = 'PROXIMO';
-        if (parseInt(sessionStorage.getItem('codigoPergunta')) == (listarPerguntas().length)) {
-            rotear("home", "Início");
-            sessionStorage.setItem('codigoPergunta', 0);
-        }
-        else{
-            sessionStorage.setItem('codigoPergunta', parseInt(sessionStorage.getItem('codigoPergunta')) + 1);
-            popularTela();
+        
+        if (responder()) {
+            if (parseInt(sessionStorage.getItem('codigoPergunta')) == (listarPerguntas().length)) {
+                contarAcertos();
+                rotear("home", "Início");
+                sessionStorage.setItem('codigoPergunta', 0);
+            }
+            else{
+                sessionStorage.setItem('codigoPergunta', parseInt(sessionStorage.getItem('codigoPergunta')) + 1);
+                popularTela();
+            }
         }
     }
     catch (ex) {
@@ -62,15 +76,50 @@ function proximaPergunta() {
     }
 }
 
-function verificarAcerto() {
-    let codigoPergunta = parseInt(sessionStorage.getItem("codigoPergunta"));
-    let pergunta = consultarPerguntas(codigoPergunta);
-    let value = parseInt(document.getElementById("alternativas").querySelector("input[name=resposta]:checked").getAttribute('value'));
+function contarAcertos () {
+    let perguntas = listarPerguntas();
+    let respostas = listarRespostas();
+
+    let qtdRespostasCertas = respostas.filter(f => perguntas.find(fi => fi.codigo == f.codigoPergunta).alternativaCorreta == f.resposta).length;
+    console.log(qtdRespostasCertas);
+    return qtdRespostasCertas;
+}
+
+function criarTempleteContadorPergunta() {
+    let perguntas = listarPerguntas();
+    let posicaoAtual = perguntas.findIndex(f => f.codigo == parseInt(sessionStorage.getItem("codigoPergunta")));
+
+    return `${posicaoAtual++} / ${perguntas.length}`;
+}
+
+function responder() {
+    if (sessionStorage.getItem("codigoPergunta") > 0) {
+        let codigoPergunta = parseInt(sessionStorage.getItem("codigoPergunta"));
+        let value;
+        try {
+            value = parseInt(document.getElementById("alternativas").querySelector("input[name=resposta]:checked").getAttribute('value'));
+        }
+        catch (ex) {
+            alert('Selecione uma opção para proceguir.');
+            return false;
+        }
+        inserirRespostar({ codigoPergunta : codigoPergunta, resposta : value });
+    }
+
+    return true;
+}
+
+function limparQuiz() {
+    sessionStorage.setItem('codigoPergunta', 0);
+    sessionStorage.setItem('acertos', 0);
+    sessionStorage.setItem('respostas', '[]');
+    carregarPerguntas();
 }
 
 function routerQuiz() {
     rotear("quiz", "Quiz");
     sessionStorage.setItem('codigoPergunta', 0);
     sessionStorage.setItem('acertos', 0);
+    sessionStorage.setItem('respostas', '[]');
     carregarPerguntas();
 }
