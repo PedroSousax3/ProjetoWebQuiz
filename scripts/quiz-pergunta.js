@@ -118,8 +118,5 @@ function limparQuiz() {
 
 function routerQuiz() {
     rotear("quiz", "Quiz");
-    sessionStorage.setItem('codigoPergunta', 0);
-    sessionStorage.setItem('acertos', 0);
-    sessionStorage.setItem('respostas', '[]');
-    carregarPerguntas();
+    limparQuiz();
 }
