@@ -1,4 +1,4 @@
-function rotear (page, nome) {
+function rotear (page, nome, callback = null) {
     if (!!page) {
         sessionStorage.setItem('page', page || 'home');
         sessionStorage.setItem('name', nome || 'Início');
@@ -11,9 +11,14 @@ function rotear (page, nome) {
     })
     .then((resp) => resp.text())
     .then(function (content) {
-        document.getElementById("conteudo").style.marginTop = `${document.getElementById("menu-top").getBoundingClientRect().height}px`;
-        document.getElementById("conteudo").innerHTML = content;
         document.title = sessionStorage.getItem('name') || "Início";
+        document.getElementById("conteudo").style.marginTop = `${document.getElementById("menu-top").getBoundingClientRect().height}px`;
+        document.getElementById("conteudo").innerHTML = '';
+        document.getElementById("conteudo").appendChild(
+            document.createRange().createContextualFragment(content)
+        );
+        if (callback)
+            callback();
     });
 
     gerenciarMenu();

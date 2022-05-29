@@ -40,6 +40,22 @@
     color: rgb(var(--secundaria-texto-rgb));
 }
 
+#contadorQuiz {
+    position: fixed;
+    top: 70px;
+    right: 70px;
+
+    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 20px;
+
+    text-align: center;
+    vertical-align: sub;
+    
+    background-color: rgb(var(--primaria-fundo-rgb));
+    color: rgb(var(--primaria-texto-rgb));
+}
+
 #conteudo > div {
     max-width: 800px;
 }
