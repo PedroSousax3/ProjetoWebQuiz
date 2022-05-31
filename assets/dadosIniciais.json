@@ -24,7 +24,7 @@
     },
     {
         "codigo": 2,
-        "pergunta":"<div><img width='800' src='../utils/images/Phoenix_2.jpg'><audio autoplay loop ><source src='../utils/audio/Phoenix.mp3'> type='audio/mpeg'></audio><div style='margin-bottom: 20px'>A música Phoenix, cantada por Cailin Russo e Chrissy Costanza, foi a música tema do campeonato mundial de League of Legends de qual ano?</div></div>",
+        "pergunta":"<div><img width='800' src='../utils/images/Phoenix_2.jpg'><audio autoplay loop><source src='../utils/audio/Phoenix.mp3'> type='audio/mpeg'></audio><div style='margin-bottom: 20px'>A música Phoenix, cantada por Cailin Russo e Chrissy Costanza, foi a música tema do campeonato mundial de League of Legends de qual ano?</div></div>",
         "alternativa": [
             {
                 "codigo": 1,

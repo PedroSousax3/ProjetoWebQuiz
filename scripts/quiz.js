@@ -10,7 +10,7 @@ function carregarPerguntas() {
             }).catch(function (ex) {
                 alert(`Erro:\n${ex}`);
             }).then(function (dados) {
-                sessionStorage.setItem('perguntas', JSON.stringify(dados));
+                sessionStorage.setItem('perguntas', JSON.stringify(embaralharList(dados)));
             }).catch(function (ex) {
                 alert(`Erro:\n${ex}`);
             });
@@ -22,7 +22,7 @@ function carregarPerguntas() {
 //#endregion
 
 //#region Manipular Perguntas e Respostas
-const listarPerguntas = () => JSON.parse(sessionStorage.getItem('perguntas'));
+const listarPerguntas = () => JSON.parse(sessionStorage.getItem('perguntas')) || [];
 const consultarPerguntas = (codigoPergunta) => listarPerguntas().find(f => f.codigo == parseInt(codigoPergunta));
 
 function criarTempleteAlternativa(id, alternatica) {
@@ -96,14 +96,19 @@ function proximaPergunta() {
         let btnProximaPergunta = document.getElementById('btnProximaPergunta');
         btnProximaPergunta.innerText = 'PROXIMO';
         
+        const perguntas = listarPerguntas();
+        let codigoPergunta = parseInt(sessionStorage.getItem('codigoPergunta'));
+        let indiceAtual = perguntas.findIndex(f => f.codigo == codigoPergunta);
+
         if (responder()) {
-            if (parseInt(sessionStorage.getItem('codigoPergunta')) == (listarPerguntas().length)) {
+            if ((indiceAtual + 1) == perguntas.length) {
                 contarAcertos();
-                rotear("home", "Início");
-                sessionStorage.setItem('codigoPergunta', 0);
+                rotear('home', 'Início');
+                sessionStorage.setItem('perguntas', JSON.stringify(embaralharList(listarPerguntas())));
+                sessionStorage.setItem('codigoPergunta', listarPerguntas()[0].codigo);
             }
             else{
-                sessionStorage.setItem('codigoPergunta', parseInt(sessionStorage.getItem('codigoPergunta')) + 1);
+                sessionStorage.setItem('codigoPergunta', perguntas[indiceAtual + 1].codigo);
                 popularTemplatePergunta();
             }
         }
@@ -130,6 +135,7 @@ function limparQuiz() {
     sessionStorage.setItem('codigoPergunta', 0);
     sessionStorage.setItem('acertos', 0);
     sessionStorage.setItem('respostas', '[]');
+    sessionStorage.setItem('perguntas', JSON.stringify(embaralharList(listarPerguntas())));
 
     carregarPerguntas();
     criarTempleteContadorPergunta();
@@ -138,4 +144,13 @@ function limparQuiz() {
 function routerQuiz() {
     rotear("quiz", "Quiz");
     limparQuiz();
+}
+
+function embaralharList (lista) {
+    let novaLista = [];
+    lista.forEach((elemento, index) => {
+        const novaPosicao = parseInt(Math.random() * (10 ^ String(lista.length).length));
+        novaLista.splice(novaPosicao, 0, elemento);
+    });
+    return novaLista;
 }
