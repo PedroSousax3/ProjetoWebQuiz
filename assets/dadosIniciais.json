@@ -1,7 +1,7 @@
 [
     {
         "codigo": 1,
-        "pergunta": "<div><img width='800' src='../utils/images/New_Dawn_2.jpg'><div style='margin-bottom: 20px'>Qual é o Campeão protagonista da animação “Uma Nova Alvorada” de League of Legends?</div></div>",
+        "pergunta": "<div><img class='midiaPergunta' src='../utils/images/New_Dawn_2.jpg'><div style='margin-bottom: 20px'>Qual é o Campeão protagonista da animação “Uma Nova Alvorada” de League of Legends?</div></div>",
         "alternativa": [
             {
                 "codigo": 1,
@@ -24,7 +24,7 @@
     },
     {
         "codigo": 2,
-        "pergunta":"<div><img width='800' src='../utils/images/Phoenix_2.jpg'><audio autoplay loop><source src='../utils/audio/Phoenix.mp3'> type='audio/mpeg'></audio><div style='margin-bottom: 20px'>A música Phoenix, cantada por Cailin Russo e Chrissy Costanza, foi a música tema do campeonato mundial de League of Legends de qual ano?</div></div>",
+        "pergunta":"<div><img class='midiaPergunta' src='../utils/images/Phoenix_2.jpg'><audio autoplay loop><source src='../utils/audio/Phoenix.mp3'> type='audio/mpeg'></audio><div style='margin-bottom: 20px'>A música Phoenix, cantada por Cailin Russo e Chrissy Costanza, foi a música tema do campeonato mundial de League of Legends de qual ano?</div></div>",
         "alternativa": [
             {
                 "codigo": 1,
@@ -47,7 +47,7 @@
     },
     {
         "codigo": 3,
-        "pergunta": "<div><audio src='../utils/audio/Ekko.mp3' autoplay></audio><img width='800' src='../utils/images/Segundos.jpg'><div style='margin-bottom: 20px'>Qual é o nome da animação de anúncio do Campeão Ekko?</div></div>",
+        "pergunta": "<div><audio src='../utils/audio/Ekko.mp3' autoplay></audio><img class='midiaPergunta' src='../utils/images/Segundos.jpg'><div style='margin-bottom: 20px'>Qual é o nome da animação de anúncio do Campeão Ekko?</div></div>",
         "alternativa": [
             {
                 "codigo": 1,
@@ -70,7 +70,7 @@
     },
     {
         "codigo":4,
-        "pergunta":"<div><video width='800' poster='../utils/images/lol_logo.png' controls autoplay loop><source src='../utils/videos/Warwick.mp4' type='video/mp4'></video><div style='margin-bottom: 20px'>Este trecho de animação, é referente ao anúncio de qual campeão?</div></div>",
+        "pergunta":"<div><video class='midiaPergunta' poster='../utils/images/lol_logo.png' controls autoplay loop><source src='../utils/videos/Warwick.mp4' type='video/mp4'></video><div style='margin-bottom: 20px'>Este trecho de animação, é referente ao anúncio de qual campeão?</div></div>",
         "alternativa":[
             {
                 "codigo":1,
@@ -93,7 +93,7 @@
     },
     {
         "codigo":5,
-        "pergunta":"<div><video width='800' poster='../utils/images/lol_logo.png' controls autoplay loop><source src='../utils/videos/Awaken.mp4' type='video/mp4'></video><div style='margin-bottom: 20px'>Quantos campeões estão presentes na luta que está acontecendo em Ionia na animação da temporada de 2019 de League of Legends, Awaken?</div></div>",
+        "pergunta":"<div><video class='midiaPergunta' poster='../utils/images/lol_logo.png' controls autoplay loop><source src='../utils/videos/Awaken.mp4' type='video/mp4'></video><div style='margin-bottom: 20px'>Quantos campeões estão presentes na luta que está acontecendo em Ionia na animação da temporada de 2019 de League of Legends, Awaken?</div></div>",
         "alternativa":[
             {
                 "codigo":1,
@@ -116,7 +116,7 @@
     },
     {
         "codigo":6,
-        "pergunta":"<div><video width='800' poster='../utils/images/lol_logo.png' controls autoplay loop><source src='../utils/videos/Ruina.mp4' type='video/mp4'></video><div style='margin-bottom: 20px'>Quais campeões são controlados pela névoa negra da tormenta na animação da temporada de 2021 de League of Legends, Ruína?</div></div>",
+        "pergunta":"<div><video class='midiaPergunta' poster='../utils/images/lol_logo.png' controls autoplay loop><source src='../utils/videos/Ruina.mp4' type='video/mp4'></video><div style='margin-bottom: 20px'>Quais campeões são controlados pela névoa negra da tormenta na animação da temporada de 2021 de League of Legends, Ruína?</div></div>",
         "alternativa":[
             {
                 "codigo":1,
@@ -139,7 +139,7 @@
     },
     {
         "codigo":7,
-        "pergunta":"<div><video width='800' poster='../utils/images/lol_logo.png' controls autoplay loop><source src='../utils/videos/Amumu.mp4' type='video/mp4'></video><div style='margin-bottom: 20px'>Qual é o nome desta animação de League of Legends lançada em 2015?</div></div>",
+        "pergunta":"<div><video class='midiaPergunta' poster='../utils/images/lol_logo.png' controls autoplay loop><source src='../utils/videos/Amumu.mp4' type='video/mp4'></video><div style='margin-bottom: 20px'>Qual é o nome desta animação de League of Legends lançada em 2015?</div></div>",
         "alternativa":[
             {
                 "codigo":1,
@@ -162,7 +162,7 @@
     },
     {
         "codigo":8,
-        "pergunta":"<div><video width='800' poster='../utils/images/lol_logo.png' controls autoplay loop><source src='../utils/videos/As_We_Fall.mp4' type='video/mp4'></video><div style='margin-bottom: 20px'>A animação As We Fall, lançada em 2017, é o trailer de anúncio de qual campeão?</div></div>",
+        "pergunta":"<div><video class='midiaPergunta' poster='../utils/images/lol_logo.png' controls autoplay loop><source src='../utils/videos/As_We_Fall.mp4' type='video/mp4'></video><div style='margin-bottom: 20px'>A animação As We Fall, lançada em 2017, é o trailer de anúncio de qual campeão?</div></div>",
         "alternativa":[
             {
                 "codigo":1,
@@ -208,7 +208,7 @@
     },
     {
     "codigo":10,
-        "pergunta":"<div><video width='800' poster='../utils/images/lol_logo.png' controls autoplay loop><source src='../utils/videos/Warriors.mp4' type='video/mp4'></video><div style='margin-bottom: 20px'>Onde a música Warriors, utilizada na animação que carrega o mesmo nome para a temporada de 2020 de League of Legends, foi utilizada pela primeira vez?</div></div>",
+        "pergunta":"<div><video class='midiaPergunta' poster='../utils/images/lol_logo.png' controls autoplay loop><source src='../utils/videos/Warriors.mp4' type='video/mp4'></video><div style='margin-bottom: 20px'>Onde a música Warriors, utilizada na animação que carrega o mesmo nome para a temporada de 2020 de League of Legends, foi utilizada pela primeira vez?</div></div>",
         "alternativa":[
             {
                 "codigo":1,
