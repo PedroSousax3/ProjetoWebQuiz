@@ -51,12 +51,12 @@
 
     text-align: center;
     vertical-align: sub;
-    
+
     background-color: rgb(var(--primaria-fundo-rgb));
     color: rgb(var(--primaria-texto-rgb));
 }
 
-#conteudo > div {
+#conteudo>div {
     max-width: 800px;
 }
 
@@ -68,7 +68,7 @@
     padding: 20px;
 }
 
-#conteudo > #container-pergunta {
+#conteudo>#container-pergunta {
     display: flex;
     flex-grow: 1;
 
@@ -84,12 +84,12 @@
     padding: 20px;
 }
 
-#alternativas > div {
-    
+#alternativas>div {
+
     margin: 5px 0px;
 }
 
-#alternativas > div > input {
+#alternativas>div>input {
     margin-right: 15px;
 }
 

@@ -152,7 +152,7 @@
             sessionStorage.setItem('perguntas', JSON.stringify(Quiz.embaralharList(Quiz.listarPerguntas())));
     
             Quiz.carregarPerguntas();
-            Quiz.criarTempleteContadorPergunta();
+            //Quiz.criarTempleteContadorPergunta();
         },
     
         routerQuiz: function () {
@@ -162,10 +162,13 @@
     
         embaralharList: function (lista) {
             let novaLista = [];
+            let ultimo = lista.pop(lista.length - 1);
             lista.forEach((elemento, index) => {
                 let novaPosicao = parseInt(Math.random() * lista.length);
                 novaLista.splice(novaPosicao, 0, elemento);
             });
+
+            novaLista.push(ultimo);
             return novaLista;
         }
     }
