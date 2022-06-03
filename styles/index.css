@@ -43,7 +43,7 @@
 #contadorQuiz {
     position: fixed;
     top: 70px;
-    right: 30px;
+    right: 2rem;
 
     margin-top: 20px;
     padding: 10px 20px;
