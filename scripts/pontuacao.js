@@ -7,14 +7,17 @@
         listarHistoricoPontuacao () {
             const perguntas = JSON.parse(sessionStorage.getItem('perguntas'));
             
-            return JSON.parse(sessionStorage.getItem('historico')).map(m => {
+            return (JSON.parse(sessionStorage.getItem('historico')) || []).map(m => {
                 return {
                     historico: m,
-                    resposta: m.respostas.map(
+                    dtFinalizacaoQuiz: m.dtFinalizacaoQuiz,
+                    qtdRespostasCertas: m.qtdRespostasCertas,
+                    respostas: m.respostas.map(
                         mR => {
                             return { 
                                 pergunta: perguntas.find(f => f.codigo == mR.codigoPergunta), 
-                                resposta: mR.resposta 
+                                resposta: mR.resposta,
+                                acertou: mR.resposta == perguntas.find(f => f.codigo == mR.codigoPergunta).alternativaCorreta
                             } 
                         }
                     )
@@ -26,30 +29,52 @@
             return this.listarHistoricoPontuacao().findLast(f => true);
         }
     
-        popularUltimaPontuacao () {
-            const ultimaPontuacao = this.listarUltimaPontuacao();
-            
-            return `
-                <div>
-                    <table>
-                        <thead>
-                            <tr>Pergunta<tr>
-                            <tr>Resposta<tr>
-                            <tr>Acertou?</tr>
-                        </thead>
-                        <tbody>
-                            {
-
-                            }
-                        </tbody>
-                    </table>
-                <div>
-            `;
+        criarTempleteRespostas(historico) {
+            return historico.respostas.map((m, i) => {
+                return ( 
+                    `<div class='containerPeguntaPontuacao ${(m.acertou ? 'fundo-opacity-green' : 'fundo-opacity-red')}'>
+                        <div>Pergunta: ${m.pergunta.pergunta}</div>
+                        <div>Resposta: ${m.pergunta.alternativa.find(f => f.codigo == m.resposta).resposta}</div>
+                        <div>Acertou: ${m.acertou ? 'Sim' : 'Não'}</div>
+                    </div>`
+                );
+            }).join('');
         }
-    }
+
+        popularTempleteRespostas(historico) {
+            document.querySelector('#dvResultado').appendChild(
+                document.createRange().createContextualFragment(
+                    pontuacao.criarTempleteRespostas(pontuacao.listarUltimaPontuacao(historico))
+                )
+            );
+        
+        
+            document.querySelector('#dvResultado').querySelectorAll("video, audio").forEach(f => {
+                f.removeAttribute('autoplay');
+                f.setAttribute('controls', true);
+                f.removeAttribute('loop')
+            });
+        }
+
+        criarTemplateContadorRespostas (historico) {
+            return (`
+                <div id='containerAcertos'>
+                    <div>${new Date(historico.dtFinalizacaoQuiz).toLocaleString()}</div>
+                    <div>Acertos: ${historico.qtdRespostasCertas} de ${historico.respostas.length}</div>
+                </div>
+            `);
+        }
+
+        popularContadorRespostas(historico) {
+            document.querySelector('#dvContadorAcertos').appendChild(
+                document.createRange().createContextualFragment(
+                    this.criarTemplateContadorRespostas(historico)
+                )
+            )
+        }
+    }    
 
     const pontuacao = new Pontuacao();
-
-    console.log(pontuacao.listarUltimaPontuacao());
-
+    pontuacao.popularContadorRespostas(pontuacao.listarUltimaPontuacao());
+    pontuacao.popularTempleteRespostas(pontuacao.listarUltimaPontuacao());
 }())

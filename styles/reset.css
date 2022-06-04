@@ -60,3 +60,8 @@ ul.estilo-padrao > li > a:hover {
     direction: ltr;
     -webkit-font-smoothing: antialiased;
 }
+
+
+hr {
+    margin: 18px 0px;
+}

@@ -76,6 +76,7 @@
     justify-content: center;
 
     max-width: 800px;
+    margin-bottom: 30px;
 }
 
 #alternativas {
@@ -96,4 +97,36 @@
 .midiaPergunta {
     width: 100%;
     max-width: 800px;
+}
+
+.containerPeguntaPontuacao {
+    padding: 20px;
+    margin: 20px 0px;
+    border-radius: 0.25rem;
+}
+
+.fundo-opacity-red {
+    color: #842029;
+    background-color: #f8d7da;
+    border-color: #f5c2c7;   
+}
+
+.fundo-opacity-green {
+    color: #0f5132;
+    background-color: #d1e7dd;
+    border-color: #badbcc;
+}
+
+#containerAcertos {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 0.25rem;
+    width: 100%;
+
+    background-color: rgba(var(--primaria-fundo-rgb));
+    color: rgb(var(--primaria-texto-rgb));
+    border-color: rgba(var(--primaria-fundo-rgb));
+
+    margin-top: 20px;
+    padding: 15px 10px;
 }

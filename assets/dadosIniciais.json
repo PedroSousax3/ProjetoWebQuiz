@@ -5,16 +5,16 @@
         "alternativa": [
             {
                 "codigo": 1,
-                "resposta": "1. Leona"
+                "resposta": "Leona"
             }, {
                 "codigo": 2,
-                "resposta": "2.Draven"
+                "resposta": "Draven"
             }, {
                 "codigo": 3,
-                "resposta": "3. Ahri"
+                "resposta": "Ahri"
             }, {
                 "codigo": 4,
-                "resposta": "4. Darius"
+                "resposta": "Darius"
             }
         ],
         "alternativaCorreta": 3
@@ -25,16 +25,16 @@
         "alternativa": [
             {
                 "codigo": 1,
-                "resposta": "1. Worlds 2017 - League of Legends"
+                "resposta": "Worlds 2017 - League of Legends"
             }, {
                 "codigo": 2,
-                "resposta": "2. Worlds 2018 - League of Legends"
+                "resposta": "Worlds 2018 - League of Legends"
             }, {
                 "codigo": 3,
-                "resposta": "3. Worlds 2019 - League of Legends"
+                "resposta": "Worlds 2019 - League of Legends"
             }, {
                 "codigo": 4,
-                "resposta": "4. Worlds 2020 - League of Legends"
+                "resposta": "Worlds 2020 - League of Legends"
             }
         ],
         "alternativaCorreta": 3
@@ -45,16 +45,16 @@
         "alternativa": [
             {
                 "codigo": 1,
-                "resposta": "1. Ekko: Cronoquebra"
+                "resposta": "Ekko: Cronoquebra"
             }, {
                 "codigo": 2,
-                "resposta": "2. Ekko: O garoto que estilhaçou o tempo"
+                "resposta": "Ekko: O garoto que estilhaçou o tempo"
             }, {
                 "codigo": 3,
-                "resposta": "3. Ekko: Convergência"
+                "resposta": "Ekko: Convergência"
             }, {
                 "codigo": 4,
-                "resposta": "4. Ekko: Segundos"
+                "resposta": "Ekko: Segundos"
             }
         ],
         "alternativaCorreta": 4
@@ -65,16 +65,16 @@
         "alternativa": [
             {
                 "codigo": 1,
-                "resposta": "1. Warwick"
+                "resposta": "Warwick"
             }, {
                 "codigo": 2,
-                "resposta": "2. Dr. Mundo"
+                "resposta": "Dr. Mundo"
             }, {
                 "codigo": 3,
-                "resposta": "3. Urgot"
+                "resposta": "Urgot"
             }, {
                 "codigo": 4,
-                "resposta": "4. Vander"
+                "resposta": "Vander"
             }
         ],
         "alternativaCorreta": 1
@@ -84,16 +84,16 @@
         "alternativa": [
             {
                 "codigo": 1,
-                "resposta": "1. 3 campeões"
+                "resposta": "3 campeões"
             }, {
                 "codigo": 2,
-                "resposta": "2. 4 campeões"
+                "resposta": "4 campeões"
             }, {
                 "codigo": 3,
-                "resposta": "3. 5 campeões"
+                "resposta": "5 campeões"
             }, {
                 "codigo": 4,
-                "resposta": "4. 6 campeões"
+                "resposta": "6 campeões"
             }
         ],
         "alternativaCorreta": 4
@@ -103,16 +103,16 @@
         "alternativa": [
             {
                 "codigo": 1,
-                "resposta": "1. Samira e Vayne"
+                "resposta": "Samira e Vayne"
             }, {
                 "codigo": 2,
-                "resposta": "2. Darius e Karma"
+                "resposta": "Darius e Karma"
             }, {
                 "codigo": 3,
-                "resposta": "3. Poppy e Draven"
+                "resposta": "Poppy e Draven"
             }, {
                 "codigo": 4,
-                "resposta": "4. Lucian e Senna"
+                "resposta": "Lucian e Senna"
             }
         ],
         "alternativaCorreta": 2
@@ -122,16 +122,16 @@
         "alternativa": [
             {
                 "codigo": 1,
-                "resposta": "1. Contos de Shurima: Amumu"
+                "resposta": "Contos de Shurima: Amumu"
             }, {
                 "codigo": 2,
-                "resposta": "2. A pequena múmia triste"
+                "resposta": "A pequena múmia triste"
             }, {
                 "codigo": 3,
-                "resposta": "3. A maldição da múmia triste"
+                "resposta": "A maldição da múmia triste"
             }, {
                 "codigo": 4,
-                "resposta": "4. Histórias de Runeterra: Amumu"
+                "resposta": "Histórias de Runeterra: Amumu"
             }
         ],
         "alternativaCorreta": 3
@@ -141,16 +141,16 @@
         "alternativa": [
             {
                 "codigo": 1,
-                "resposta": "1. Varus"
+                "resposta": "Varus"
             }, {
                 "codigo": 2,
-                "resposta": "2. Xerath"
+                "resposta": "Xerath"
             }, {
                 "codigo": 3,
-                "resposta": "3. Malzahar"
+                "resposta": "Malzahar"
             }, {
                 "codigo": 4,
-                "resposta": "4. Kassadin"
+                "resposta": "Kassadin"
             }
         ],
         "alternativaCorreta": 1
@@ -160,16 +160,16 @@
         "alternativa": [
             {
                 "codigo": 1,
-                "resposta": "1. Nocturne"
+                "resposta": "Nocturne"
             }, {
                 "codigo": 2,
-                "resposta": "2. Fiddlesticks"
+                "resposta": "Fiddlesticks"
             }, {
                 "codigo": 3,
-                "resposta": "3. Thresh"
+                "resposta": "Thresh"
             }, {
                 "codigo": 4,
-                "resposta": "4. Karthus"
+                "resposta": "Karthus"
             }
         ],
         "alternativaCorreta": 2
@@ -179,16 +179,16 @@
         "alternativa": [
             {
                 "codigo": 1,
-                "resposta": "1. Worlds 2014 - League of Legends"
+                "resposta": "Worlds 2014 - League of Legends"
             }, {
                 "codigo": 2,
-                "resposta": "2. Worlds 2015 - League of Legends"
+                "resposta": "Worlds 2015 - League of Legends"
             }, {
                 "codigo": 3,
-                "resposta": "3. Worlds 2016 - League of Legends"
+                "resposta": "Worlds 2016 - League of Legends"
             }, {
                 "codigo": 4,
-                "resposta": "4. Animação da Temporada 2020 - League of Legends"
+                "resposta": "Animação da Temporada 2020 - League of Legends"
             }
         ],
         "alternativaCorreta": 1

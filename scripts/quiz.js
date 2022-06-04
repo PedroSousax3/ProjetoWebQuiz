@@ -12,7 +12,7 @@
                     }).catch(function (ex) {
                         alert(`Erro:\n${ex}`);
                     }).then(function (dados) {
-                        sessionStorage.setItem('perguntas', JSON.stringify(Quiz.embaralharList(dados)));
+                        sessionStorage.setItem('perguntas', JSON.stringify(Quiz.embaralharListPeguntas(dados)));
                     }).catch(function (ex) {
                         alert(`Erro:\n${ex}`);
                     });
@@ -52,7 +52,9 @@
     
             containerPergunta.innerHTML = pergunta.pergunta;
             containerAlternativas.innerHTML = '';
-            pergunta.alternativa.forEach((f, i) => {
+
+            const alernativas = Quiz.embaralharList(pergunta.alternativa);
+            alernativas.forEach((f, i) => {
                 containerAlternativas.innerHTML = containerAlternativas.innerHTML + Quiz.criarTempleteAlternativa(i, f);
             });
         },
@@ -106,7 +108,7 @@
                     if ((indiceAtual + 1) == perguntas.length) {
                         Quiz.contarAcertos();
                         rotear('home', 'Início');
-                        sessionStorage.setItem('perguntas', JSON.stringify(Quiz.embaralharList(Quiz.listarPerguntas())));
+                        sessionStorage.setItem('perguntas', JSON.stringify(Quiz.embaralharListPeguntas(Quiz.listarPerguntas())));
                         sessionStorage.setItem('codigoPergunta', Quiz.listarPerguntas()[0].codigo);
                     }
                     else{
@@ -149,7 +151,7 @@
             sessionStorage.setItem('codigoPergunta', 0);
             sessionStorage.setItem('acertos', 0);
             sessionStorage.setItem('respostas', '[]');
-            sessionStorage.setItem('perguntas', JSON.stringify(Quiz.embaralharList(Quiz.listarPerguntas())));
+            sessionStorage.setItem('perguntas', JSON.stringify(Quiz.embaralharListPeguntas(Quiz.listarPerguntas())));
     
             Quiz.carregarPerguntas();
             //Quiz.criarTempleteContadorPergunta();
@@ -160,15 +162,20 @@
             Quiz.limparQuiz();
         },
     
+        embaralharListPeguntas: function (lista) {
+            let ultimo = lista.pop(lista.length - 1);
+            let novaLista = Quiz.embaralharList(lista);
+            novaLista.push(ultimo);
+            return novaLista;
+        },
+
         embaralharList: function (lista) {
             let novaLista = [];
-            let ultimo = lista.pop(lista.length - 1);
             lista.forEach((elemento, index) => {
                 let novaPosicao = parseInt(Math.random() * lista.length);
                 novaLista.splice(novaPosicao, 0, elemento);
             });
 
-            novaLista.push(ultimo);
             return novaLista;
         }
     }
