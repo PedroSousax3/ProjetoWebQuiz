@@ -12,7 +12,7 @@
                     }).catch(function (ex) {
                         alert(`Erro:\n${ex}`);
                     }).then(function (dados) {
-                        sessionStorage.setItem('perguntas', JSON.stringify(Quiz.embaralharListPeguntas(dados)));
+                        localStorage.setItem('perguntas', JSON.stringify(Quiz.embaralharListPeguntas(dados)));
                     }).catch(function (ex) {
                         alert(`Erro:\n${ex}`);
                     });
@@ -24,7 +24,7 @@
         //#endregion
     
         //#region Manipular Perguntas e Respostas
-        listarPerguntas : () => JSON.parse(sessionStorage.getItem('perguntas')) || [],
+        listarPerguntas : () => JSON.parse(localStorage.getItem('perguntas')) || [],
         consultarPerguntas: (codigoPergunta) => Quiz.listarPerguntas().find(f => f.codigo == parseInt(codigoPergunta)),
     
         criarTempleteAlternativa: function (id, alternatica) {
@@ -34,18 +34,18 @@
                     </div>`;
         },
     
-        listarRespostas : () => JSON.parse(sessionStorage.getItem('respostas')),
+        listarRespostas : () => JSON.parse(localStorage.getItem('respostas')),
     
         inserirRespostar: function (resposta) {
             let respostas = Quiz.listarRespostas();
             respostas.push(resposta);
-            sessionStorage.setItem('respostas', JSON.stringify(respostas));
+            localStorage.setItem('respostas', JSON.stringify(respostas));
         },
         //#endregion
     
         //#region Templates
         popularTemplatePergunta: function () {
-            const codigoPergunta = parseInt(sessionStorage.getItem("codigoPergunta"));
+            const codigoPergunta = parseInt(localStorage.getItem("codigoPergunta"));
             const containerPergunta = document.getElementById("pergunta");
             const containerAlternativas = document.getElementById("alternativas");
             const pergunta = Quiz.consultarPerguntas(codigoPergunta);
@@ -61,7 +61,7 @@
     
         criarTempleteContadorPergunta: function () {
             let perguntas = Quiz.listarPerguntas();
-            let posicaoAtual = perguntas == null ? -1 : perguntas.findIndex(f => f.codigo == parseInt(sessionStorage.getItem("codigoPergunta")));
+            let posicaoAtual = perguntas == null ? -1 : perguntas.findIndex(f => f.codigo == parseInt(localStorage.getItem("codigoPergunta")));
     
             const elementoContadorQuiz = document.querySelector('#contadorQuiz');
             // document.querySelector('#contadorQuiz').onload = function () {
@@ -75,8 +75,8 @@
     
         responder: function() {
             try {
-                if (parseInt(sessionStorage.getItem("codigoPergunta")) > 0) {
-                    let codigoPergunta = parseInt(sessionStorage.getItem("codigoPergunta"));
+                if (parseInt(localStorage.getItem("codigoPergunta")) > 0) {
+                    let codigoPergunta = parseInt(localStorage.getItem("codigoPergunta"));
                     let value;
                     try {
                         value = parseInt(document.getElementById("alternativas").querySelector("input[name=resposta]:checked").getAttribute('value'));
@@ -101,18 +101,18 @@
                 btnProximaPergunta.innerText = 'PROXIMO';
                 
                 const perguntas = Quiz.listarPerguntas();
-                let codigoPergunta = parseInt(sessionStorage.getItem('codigoPergunta'));
+                let codigoPergunta = parseInt(localStorage.getItem('codigoPergunta'));
                 let indiceAtual = perguntas.findIndex(f => f.codigo == codigoPergunta);
     
                 if (Quiz.responder()) {
                     if ((indiceAtual + 1) == perguntas.length) {
                         Quiz.contarAcertos();
                         rotear('home', 'Início');
-                        sessionStorage.setItem('perguntas', JSON.stringify(Quiz.embaralharListPeguntas(Quiz.listarPerguntas())));
-                        sessionStorage.setItem('codigoPergunta', Quiz.listarPerguntas()[0].codigo);
+                        localStorage.setItem('perguntas', JSON.stringify(Quiz.embaralharListPeguntas(Quiz.listarPerguntas())));
+                        localStorage.setItem('codigoPergunta', Quiz.listarPerguntas()[0].codigo);
                     }
                     else{
-                        sessionStorage.setItem('codigoPergunta', perguntas[indiceAtual + 1].codigo);
+                        localStorage.setItem('codigoPergunta', perguntas[indiceAtual + 1].codigo);
                         Quiz.popularTemplatePergunta();
                     }
                 }
@@ -133,13 +133,13 @@
                     perguntas.find(fi => fi.codigo == f.codigoPergunta).alternativaCorreta == f.resposta
                 ).length;
     
-            let hiostorico = JSON.parse(sessionStorage.getItem('historico')) || [];
+            let hiostorico = JSON.parse(localStorage.getItem('historico')) || [];
             hiostorico.push({
                 respostas: respostas,
                 qtdRespostasCertas: qtdRespostasCertas,
                 dtFinalizacaoQuiz: new Date()
             });
-            sessionStorage.setItem(
+            localStorage.setItem(
                 'historico',
                 JSON.stringify(hiostorico)
             )
@@ -148,11 +148,11 @@
         },
     
         limparQuiz: function () {
-            sessionStorage.setItem('codigoPergunta', 0);
-            sessionStorage.setItem('acertos', 0);
-            sessionStorage.setItem('respostas', '[]');
-            sessionStorage.setItem('perguntas', JSON.stringify(Quiz.embaralharListPeguntas(Quiz.listarPerguntas())));
-    
+            localStorage.setItem('codigoPergunta', 0);
+            localStorage.setItem('acertos', 0);
+            localStorage.setItem('respostas', '[]');
+            localStorage.setItem('perguntas', JSON.stringify(Quiz.embaralharListPeguntas(Quiz.listarPerguntas())));
+            
             Quiz.carregarPerguntas();
             //Quiz.criarTempleteContadorPergunta();
         },
@@ -181,5 +181,10 @@
     }
 
     Quiz.limparQuiz();
-    document.querySelector('#btnProximaPergunta').addEventListener('click', Quiz.proximaPergunta);
+    document
+        .querySelector('#btnProximaPergunta')
+        .addEventListener(
+            'click', 
+            Quiz.proximaPergunta
+        );
 }());

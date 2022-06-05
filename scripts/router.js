@@ -1,9 +1,9 @@
 function rotear (page, nome, callback = null) {
     if (!!page) {
-        sessionStorage.setItem('page', page || 'home');
-        sessionStorage.setItem('name', nome || 'Início');
+        localStorage.setItem('page', page || 'home');
+        localStorage.setItem('name', nome || 'Início');
     }
-    let path = `${window.location.origin}/pages/${sessionStorage.getItem('page') || 'home'}.html`;
+    let path = `${window.location.origin}/pages/${localStorage.getItem('page') || 'home'}.html`;
 
     fetch(path, { 
         method: 'GET',
@@ -11,7 +11,7 @@ function rotear (page, nome, callback = null) {
     })
     .then((resp) => resp.text())
     .then(function (content) {
-        document.title = sessionStorage.getItem('name') || "Início";
+        document.title = localStorage.getItem('name') || "Início";
         document.getElementById("conteudo").style.marginTop = `${document.getElementById("menu-top").getBoundingClientRect().height}px`;
         document.getElementById("conteudo").innerHTML = '';
         document.getElementById("conteudo").appendChild(

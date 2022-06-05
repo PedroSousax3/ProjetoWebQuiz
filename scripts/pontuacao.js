@@ -1,13 +1,12 @@
 (function () {
     class Pontuacao {
-        constructor () {
-    
-        }
+        
+        constructor () { }
 
         listarHistoricoPontuacao () {
-            const perguntas = JSON.parse(sessionStorage.getItem('perguntas'));
+            const perguntas = JSON.parse(localStorage.getItem('perguntas'));
             
-            return (JSON.parse(sessionStorage.getItem('historico')) || []).map(m => {
+            return (JSON.parse(localStorage.getItem('historico')) || []).map(m => {
                 return {
                     historico: m,
                     dtFinalizacaoQuiz: m.dtFinalizacaoQuiz,
@@ -30,15 +29,17 @@
         }
     
         criarTempleteRespostas(historico) {
-            return historico.respostas.map((m, i) => {
-                return ( 
-                    `<div class='containerPeguntaPontuacao ${(m.acertou ? 'fundo-opacity-green' : 'fundo-opacity-red')}'>
-                        <div>Pergunta: ${m.pergunta.pergunta}</div>
-                        <div>Resposta: ${m.pergunta.alternativa.find(f => f.codigo == m.resposta).resposta}</div>
-                        <div>Acertou: ${m.acertou ? 'Sim' : 'Não'}</div>
-                    </div>`
-                );
-            }).join('');
+            return (
+                historico ? historico.respostas.map((m, i) => {
+                    return ( 
+                        `<div class='containerPeguntaPontuacao ${(m.acertou ? 'fundo-opacity-green' : 'fundo-opacity-red')}'>
+                            <div>Pergunta: ${m.pergunta.pergunta}</div>
+                            <div>Resposta: ${m.pergunta.alternativa.find(f => f.codigo == m.resposta).resposta}</div>
+                            <div>Acertou? ${m.acertou ? 'Sim' : 'Não'}</div>
+                        </div>`
+                    );
+                }).join('') : 'Nenhuma pontuação foi encontrada.'
+            )
         }
 
         popularTempleteRespostas(historico) {
@@ -57,20 +58,23 @@
         }
 
         criarTemplateContadorRespostas (historico) {
-            return (`
-                <div id='containerAcertos'>
-                    <div>${new Date(historico.dtFinalizacaoQuiz).toLocaleString()}</div>
-                    <div>Acertos: ${historico.qtdRespostasCertas} de ${historico.respostas.length}</div>
-                </div>
-            `);
+            if (historico)
+                return (`
+                    <div id='containerAcertos'>
+                        <div>${new Date(historico.dtFinalizacaoQuiz).toLocaleString()}</div>
+                        <div>Acertos: ${historico.qtdRespostasCertas} de ${historico.respostas.length}</div>
+                    </div>
+                `);
+            
         }
 
         popularContadorRespostas(historico) {
-            document.querySelector('#dvContadorAcertos').appendChild(
-                document.createRange().createContextualFragment(
-                    this.criarTemplateContadorRespostas(historico)
-                )
-            )
+            if (historico)
+                document.querySelector('#dvContadorAcertos').appendChild(
+                    document.createRange().createContextualFragment(
+                        this.criarTemplateContadorRespostas(historico)
+                    )
+                );
         }
     }    
 
