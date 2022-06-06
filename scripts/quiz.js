@@ -1,45 +1,15 @@
-(function () {
-    const Quiz = {
-        //#region Carregar perguntas
-        carregarPerguntas : function () {
-            try {
-                fetch('/assets/dadosIniciais.json')
-                    .then(function (response) {
-                        if (response.status == 200)
-                            return response.json();
-                        else
-                            throw 'Não foi possivel acessar as perguntas';
-                    }).catch(function (ex) {
-                        alert(`Erro:\n${ex}`);
-                    }).then(function (dados) {
-                        localStorage.setItem('perguntas', JSON.stringify(Quiz.embaralharListPeguntas(dados)));
-                    }).catch(function (ex) {
-                        alert(`Erro:\n${ex}`);
-                    });
-            }
-            catch (ex) {
-                alert(`Erro:\n${ex}`);
-            }
-        },
-        //#endregion
-    
-        //#region Manipular Perguntas e Respostas
-        listarPerguntas : () => JSON.parse(localStorage.getItem('perguntas')) || [],
-        consultarPerguntas: (codigoPergunta) => Quiz.listarPerguntas().find(f => f.codigo == parseInt(codigoPergunta)),
-    
+(async function () {
+    const data = await import('./data.js');
+    const perguntasData = new data.Perguntas();
+    const respostasData = new data.Respostas();
+
+    const Quiz = {    
+        //#region Template alternativas
         criarTempleteAlternativa: function (id, alternatica) {
             return `<div>\n
                         <input id="rbResposta${id}" type="radio" name="resposta" value="${alternatica.codigo}" />
                         <label for="rbResposta${id}">${alternatica.resposta}</label>
                     </div>`;
-        },
-    
-        listarRespostas : () => JSON.parse(localStorage.getItem('respostas')),
-    
-        inserirRespostar: function (resposta) {
-            let respostas = Quiz.listarRespostas();
-            respostas.push(resposta);
-            localStorage.setItem('respostas', JSON.stringify(respostas));
         },
         //#endregion
     
@@ -48,25 +18,22 @@
             const codigoPergunta = parseInt(localStorage.getItem("codigoPergunta"));
             const containerPergunta = document.getElementById("pergunta");
             const containerAlternativas = document.getElementById("alternativas");
-            const pergunta = Quiz.consultarPerguntas(codigoPergunta);
+            const pergunta = perguntasData.consultarPerguntas(codigoPergunta);
     
             containerPergunta.innerHTML = pergunta.pergunta;
             containerAlternativas.innerHTML = '';
 
-            const alernativas = Quiz.embaralharList(pergunta.alternativa);
+            const alernativas = perguntasData.embaralharListPeguntas(pergunta.alternativa);
             alernativas.forEach((f, i) => {
                 containerAlternativas.innerHTML = containerAlternativas.innerHTML + Quiz.criarTempleteAlternativa(i, f);
             });
         },
     
         criarTempleteContadorPergunta: function () {
-            let perguntas = Quiz.listarPerguntas();
+            let perguntas = perguntasData.listarPerguntas();
             let posicaoAtual = perguntas == null ? -1 : perguntas.findIndex(f => f.codigo == parseInt(localStorage.getItem("codigoPergunta")));
     
             const elementoContadorQuiz = document.querySelector('#contadorQuiz');
-            // document.querySelector('#contadorQuiz').onload = function () {
-            //     console.log(Quiz);
-            // }
     
             elementoContadorQuiz.style.display = posicaoAtual < 0 ? 'none' : 'block';
             elementoContadorQuiz.innerText = `${posicaoAtual + 1} / ${perguntas.length}`;
@@ -85,7 +52,7 @@
                         alert('Selecione uma opção para proceguir.');
                         return false;
                     }
-                    Quiz.inserirRespostar({ codigoPergunta : codigoPergunta, resposta : value });
+                    respostasData.inserir({ codigoPergunta : codigoPergunta, resposta : value });
                 }
             }
             catch (ex) {
@@ -100,7 +67,7 @@
                 let btnProximaPergunta = document.getElementById('btnProximaPergunta');
                 btnProximaPergunta.innerText = 'PROXIMO';
                 
-                const perguntas = Quiz.listarPerguntas();
+                const perguntas = perguntasData.listarPerguntas();
                 let codigoPergunta = parseInt(localStorage.getItem('codigoPergunta'));
                 let indiceAtual = perguntas.findIndex(f => f.codigo == codigoPergunta);
     
@@ -108,8 +75,8 @@
                     if ((indiceAtual + 1) == perguntas.length) {
                         Quiz.contarAcertos();
                         rotear('home', 'Início');
-                        localStorage.setItem('perguntas', JSON.stringify(Quiz.embaralharListPeguntas(Quiz.listarPerguntas())));
-                        localStorage.setItem('codigoPergunta', Quiz.listarPerguntas()[0].codigo);
+                        localStorage.setItem('perguntas', JSON.stringify(perguntasData.embaralharListPeguntas(perguntasData.listarPerguntas())));
+                        localStorage.setItem('codigoPergunta', perguntasData.listarPerguntas()[0].codigo);
                     }
                     else{
                         localStorage.setItem('codigoPergunta', perguntas[indiceAtual + 1].codigo);
@@ -125,8 +92,8 @@
         },
     
         contarAcertos: function () {
-            let perguntas = Quiz.listarPerguntas();
-            let respostas = Quiz.listarRespostas();
+            let perguntas = perguntasData.listarPerguntas();
+            let respostas = respostasData.listar();
     
             let qtdRespostasCertas = 
                 respostas.filter(f => 
@@ -151,32 +118,12 @@
             localStorage.setItem('codigoPergunta', 0);
             localStorage.setItem('acertos', 0);
             localStorage.setItem('respostas', '[]');
-            localStorage.setItem('perguntas', JSON.stringify(Quiz.embaralharListPeguntas(Quiz.listarPerguntas())));
-            
-            Quiz.carregarPerguntas();
-            //Quiz.criarTempleteContadorPergunta();
+            perguntasData.carregarPerguntas();
         },
     
         routerQuiz: function () {
             rotear("quiz", "Quiz");
             Quiz.limparQuiz();
-        },
-    
-        embaralharListPeguntas: function (lista) {
-            let ultimo = lista.pop(lista.length - 1);
-            let novaLista = Quiz.embaralharList(lista);
-            novaLista.push(ultimo);
-            return novaLista;
-        },
-
-        embaralharList: function (lista) {
-            let novaLista = [];
-            lista.forEach((elemento, index) => {
-                let novaPosicao = parseInt(Math.random() * lista.length);
-                novaLista.splice(novaPosicao, 0, elemento);
-            });
-
-            return novaLista;
         }
     }
 

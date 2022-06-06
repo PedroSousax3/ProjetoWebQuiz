@@ -21,7 +21,7 @@ function rotear (page, nome, callback = null) {
             callback();
     });
 
-    gerenciarMenu();
+    document.getElementById("nvMenuTopMobile").style.display = 'none';
 }
 
 function gerenciarMenu () {

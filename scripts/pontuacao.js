@@ -1,11 +1,23 @@
-(function () {
+(async function () {
     class Pontuacao {
-        
-        constructor () { }
+        #perguntasData;
+        #respostasData;
+        #historicosData;
+
+        constructor () { 
+            this.init();
+        }
+
+        async init () {
+            await import('./data.js').then(t => {
+                this.#perguntasData = new t.Perguntas();
+                this.#respostasData = new t.Respostas();
+                this.#historicosData = new t.Historico();
+            });
+        }
 
         listarHistoricoPontuacao () {
-            const perguntas = JSON.parse(localStorage.getItem('perguntas'));
-            
+            const perguntas = this.#perguntasData.listarPerguntas(); //JSON.parse(localStorage.getItem('perguntas'));
             return (JSON.parse(localStorage.getItem('historico')) || []).map(m => {
                 return {
                     historico: m,
@@ -76,9 +88,11 @@
                     )
                 );
         }
-    }    
+    }
 
     const pontuacao = new Pontuacao();
+    pontuacao.init();
+    await pontuacao.init();
     pontuacao.popularContadorRespostas(pontuacao.listarUltimaPontuacao());
     pontuacao.popularTempleteRespostas(pontuacao.listarUltimaPontuacao());
 }())
