@@ -108,7 +108,3 @@ export class Respostas {
         return JSON.parse(localStorage.getItem('respostas'));
     } 
 }
-
-export default class Main {
-    
-}

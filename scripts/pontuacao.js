@@ -91,7 +91,6 @@
     }
 
     const pontuacao = new Pontuacao();
-    pontuacao.init();
     await pontuacao.init();
     pontuacao.popularContadorRespostas(pontuacao.listarUltimaPontuacao());
     pontuacao.popularTempleteRespostas(pontuacao.listarUltimaPontuacao());
