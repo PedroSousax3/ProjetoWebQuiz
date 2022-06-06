@@ -33,6 +33,11 @@
     flex-grow: 1;
     display: flex;
     background-color: rgb(var(--secundaria-fundo-rgb));
+    background-image: url('../utils/images/background.jpeg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -72,11 +77,15 @@
     display: flex;
     flex-grow: 1;
 
+    background-color: rgb(var(--secundaria-fundo-rgb));
+    border-radius: 5px;
+
     flex-direction: column;
     justify-content: center;
 
     max-width: 800px;
     margin-bottom: 30px;
+    padding-bottom: 30px;
 }
 
 #alternativas {

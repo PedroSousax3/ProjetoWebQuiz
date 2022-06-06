@@ -15,6 +15,13 @@ body  {
     --secundaria-texto-rgb: 245, 245, 245 !important;
 }
 
+/* :root {
+    --primaria-fundo-rgb: 121, 100, 69 !important;
+    --primaria-texto-rgb: 7,6,57,1 !important;
+    --secundaria-fundo-rgb: 7,6,57,1 !important;
+    --secundaria-texto-rgb: 245, 245, 245 !important;
+} */
+
 h1, h2 {
 	color: rgb(var(--primaria-texto-rgb));
 }

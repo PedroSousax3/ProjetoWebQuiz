@@ -19,7 +19,7 @@
     height: 70px;
     padding: 5px;
 
-    background-color: rgb(var(--primaria-fundo-rgb));
+    background-color: rgb(var(--secundaria-fundo-rgb));
 }
 
 #menu-top > #dvLogoMenuTop > img {
@@ -31,7 +31,7 @@
 }
 
 #menu-top > #dvOpecoesMobile span.material-icons {
-    color: rgb(var(--primaria-texto-rgb));
+    color: rgb(var(--primaria-fundo-rgb));
     font-weight: 600;
     font-size: 40px;
 }
@@ -44,10 +44,11 @@
 #menu-top > #nvMenuTop > div {
     padding: 10px;
     margin: 5px;
+    color: rgb(var(--secundaria-fundo-rgb));
 }
 
 #menu-top > #nvMenuTopMobile {
-    background-color: rgb(var(--primaria-fundo-rgb));
+    background-color: rgb(var(--secundaria-fundo-rgb));
     
     display : none;
     flex-direction: column;
@@ -74,7 +75,7 @@
 
 #menu-top > #nvMenuTop > div > button,
 #menu-top > #nvMenuTopMobile > div > button {
-    color: rgb(var(--primaria-texto-rgb));
+    color: rgb(var(--secundaria-texto-rgb));
     text-decoration: none;
     font-weight: 600;
     font-size: 1.2rem;
@@ -85,7 +86,7 @@
 
 #menu-top > #nvMenuTopMobile > div {
     padding: 10px;
-    border-bottom: 3px solid rgb(var(--primaria-texto-rgb));
+    border-bottom: 3px solid rgb(var(--primaria-fundo-rgb));
 }
 
 #dvOpecoesMobile {
