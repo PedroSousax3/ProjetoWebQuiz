@@ -59,6 +59,8 @@
 
     background-color: rgb(var(--primaria-fundo-rgb));
     color: rgb(var(--primaria-texto-rgb));
+
+    border: 4px solid rgb(var(--secundaria-fundo-rgb));
 }
 
 #conteudo>div {
