@@ -52,7 +52,7 @@
                             </div>
                         </div>`
                     );
-                }).join('') : '<span style="font-size: 45px; color: rgb(var(--primaria-fundo-rgb)); font-weight: 800;">Nenhuma pontuação foi encontrada.</span>'
+                }).join('') : '<div style="text-align: center;"><span style="font-size: 45px; color: rgb(var(--primaria-fundo-rgb)); font-weight: 800;">Nenhuma pontuação foi encontrada.</span></div>'
             )
         }
 
