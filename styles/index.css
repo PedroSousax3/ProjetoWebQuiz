@@ -105,6 +105,17 @@
     margin-right: 15px;
 }
 
+@media screen and (min-width: 400px) {
+    .imagemQuiz {
+        width: 200px;
+    }
+}
+
+
+.imagemQuiz {
+    width: 350px;
+}
+
 .midiaPergunta {
     width: 100%;
     max-width: 800px;
