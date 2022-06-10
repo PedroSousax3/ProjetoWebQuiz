@@ -1,5 +1,3 @@
-async () => { await import('./data').then(f => console.log(f)); }
-
 (async function () {
     class Pontuacao {
         #perguntasData;
