@@ -54,7 +54,7 @@ async () => { await import('./data').then(f => console.log(f)); }
                             </div>
                         </div>`
                     );
-                }).join('') : 'Nenhuma pontuação foi encontrada.'
+                }).join('') : '<span style="font-size: 45px; color: rgb(var(--primaria-fundo-rgb)); font-weight: 800;">Nenhuma pontuação foi encontrada.</span>'
             )
         }
 
