@@ -1,3 +1,5 @@
+async () => { await import('./data').then(f => console.log(f)); }
+
 (async function () {
     class Pontuacao {
         #perguntasData;
@@ -5,7 +7,6 @@
         #historicosData;
 
         constructor () { 
-            this.init();
         }
 
         async init () {
@@ -43,11 +44,14 @@
         criarTempleteRespostas(historico) {
             return (
                 historico ? historico.respostas.map((m, i) => {
+                    console.log(m)
                     return ( 
                         `<div class='containerPeguntaPontuacao ${(m.acertou ? 'fundo-opacity-green' : 'fundo-opacity-red')}'>
                             <div>Pergunta: ${m.pergunta.pergunta}</div>
-                            <div>Resposta: ${m.pergunta.alternativa.find(f => f.codigo == m.resposta).resposta}</div>
-                            <div>Acertou? ${m.acertou ? 'Sim' : 'Não'}</div>
+                            <div style="margin-top: 15px;">
+                                <div>Resposta: ${m.pergunta.alternativa.find(f => f.codigo == m.resposta).resposta}</div>
+                                ${(m.acertou ? '' : `<div>Resposta correta: ${m.pergunta.alternativa.find(f => f.codigo == m.pergunta.alternativaCorreta).resposta}</div>`)}
+                            </div>
                         </div>`
                     );
                 }).join('') : 'Nenhuma pontuação foi encontrada.'
